@@ -8,11 +8,9 @@ class paginationView extends View {
     this._parentEl.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--inline');
       if (!btn) return;
-      console.log('btn click');
 
       const goToPage = +btn.dataset.goto;
-      console.log(goToPage);
-      handler();
+      handler(goToPage);
     });
   }
 
@@ -57,9 +55,10 @@ class paginationView extends View {
       </svg>
       <span>Page ${currPage - 1}</span>
     </button> 
-    <button class="btn--inline data-goto="${
+
+    <button data-goto="${
       currPage + 1
-    }" pagination__btn--next">
+    }" class="btn--inline pagination__btn--next">
       <span>Page ${currPage + 1}</span>
       <svg class="search__icon">
         <use href="${icons}#icon-arrow-right"></use>
